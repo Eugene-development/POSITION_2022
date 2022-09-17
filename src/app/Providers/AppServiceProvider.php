@@ -23,6 +23,9 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        //
+        // Relation::enforceMorphMap([
+            // 'seoquery' => 'App\Models\Seoquery',
+            // 'position' => 'App\Models\Position',
+        // ]);
     }
 }
