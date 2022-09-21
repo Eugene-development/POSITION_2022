@@ -35,7 +35,7 @@ class TestJob implements ShouldQueue
      */
     public function handle()
     {
-
-        //
+        sleep(5);
+        return dd('123');
     }
 }
