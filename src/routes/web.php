@@ -21,4 +21,4 @@ Route::get('/', function () {
 });
 
 Route::get('/test', [TestJobController::class, 'testMethod']);
-Route::get('/set-positions', [setPositionsController::class, 'set']);
+Route::post('/set-positions', [setPositionsController::class, 'set']);

@@ -11,9 +11,4 @@ class Position extends Model
     protected $guarded = [];
 
     protected $table = 'position';
-
-    public function parentable(): MorphTo
-    {
-        return $this->morphTo();
-    }
 }
