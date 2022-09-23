@@ -34,6 +34,7 @@ class TestSetJob implements ShouldQueue
      */
     public function handle(): void
     {
+        TODO: получить запросы и по каждому запросу обработать цикл
         $api = "https://api.megaindex.ru";
         $scanPosition = "scan_yandex_position";
         $user = "indexpro24@gmail.com";
