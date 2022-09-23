@@ -30,7 +30,8 @@ class GetPositionsController extends Controller
         $first = Arr::first($b, function ($value, $key) {
             return $value->domain == 'novostroy.org';
         });
-        dd($first->domain);
+        dd($first->position);
+        // dd($first->domain);
 
         // $c = Arr::exists($b, 0);
         // $obj = (object) $b;
