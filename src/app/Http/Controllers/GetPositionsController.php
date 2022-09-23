@@ -11,17 +11,18 @@ class GetPositionsController extends Controller
     public function get()
     {
         $url = 'https://api.megaindex.ru/scan_yandex_position?user=indexpro24@gmail.com&password=megaINDEX2022!&lr=47&results=150&request=ремонт квартир в Дзержинске&show_title=1';
-        // $get_data = file_get_contents('https://api.megaindex.ru/scan_yandex_position?user=indexpro24@gmail.com&password=megaINDEX2022!&lr=47&results=150&request=ремонт квартир в Дзержинске&show_title=1');
+        $get_data = file_get_contents($url);
+        $a = json_decode($get_data);
 
         // $data_positions = $get_data->toArray;
 
         // return $data_positions;
 
-        $client = new \GuzzleHttp\Client();
-        $res = $client->get($url);
-        $content = (string) $res->getBody();
+        // $client = new \GuzzleHttp\Client();
+        // $res = $client->get($url);
+        // $content = (string) $res->getBody();
         // dd($content);
-        $a = json_decode($content);
+        // $a = json_decode($content);
         // dd($a);
 
         $b = $a->data;
