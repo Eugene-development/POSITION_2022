@@ -9,6 +9,8 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 
+use App\Models\Position;
+
 class TestSetJob implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -30,6 +32,11 @@ class TestSetJob implements ShouldQueue
      */
     public function handle()
     {
-        //
+
+        $data = [
+            'key' => 1,
+            'value' => 7,
+        ];
+        return Position::create($data);
     }
 }

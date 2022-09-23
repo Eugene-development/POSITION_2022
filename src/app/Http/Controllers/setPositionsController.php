@@ -6,6 +6,9 @@ use App\Models\Position;
 
 use Illuminate\Http\Request;
 
+use App\Jobs\TestSetJob;
+
+
 class setPositionsController extends Controller
 {
 
@@ -16,10 +19,12 @@ class setPositionsController extends Controller
 
     public function set(Request $request)
     {
-        $data = [
-            'key' => 1,
-            'value' => 7,
-        ];
-        return Position::create($data);
+
+        TestSetJob::dispatch()->onQueue('set_1');
+        // $data = [
+        //     'key' => 1,
+        //     'value' => 7,
+        // ];
+        // return Position::create($data);
     }
 }

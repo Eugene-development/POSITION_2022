@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TestJobController;
-use App\Http\Controllers\setPositionsController;
+use App\Http\Controllers\SetPositionsController;
 
 
 /*
@@ -21,4 +21,5 @@ Route::get('/', function () {
 });
 
 Route::get('/test', [TestJobController::class, 'testMethod']);
-Route::post('/set-positions', [setPositionsController::class, 'set']);
+// Route::post('/set-positions', [SetPositionsController::class, 'set']);
+Route::get('/set-positions', [SetPositionsController::class, 'set']);
