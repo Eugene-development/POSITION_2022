@@ -35,14 +35,14 @@ class TestSetJob implements ShouldQueue
     public function handle(): void
     {
         $api = "https://api.megaindex.ru";
-        $method = "scan_yandex_position";
+        $scanPosition = "scan_yandex_position";
         $user = "indexpro24@gmail.com";
         $pass = "megaINDEX2022!";
         $domain = "novostroy.org";
         $region = "47";
         $depth = "150";
         $query = 'ремонт квартир в Дзержинске';
-        $url = "" . $api . "" . $method . "?user=" . $user . "&password=" . $pass . "&lr=" . $region . "&results=" . $depth . "&request=" . $query . "&show_title=1";
+        $url = "" . $api . "" . $scanPosition . "?user=" . $user . "&password=" . $pass . "&lr=" . $region . "&results=" . $depth . "&request=" . $query . "&show_title=1";
 
         $getData = file_get_contents($url);
         $jsonData = json_decode($getData);
