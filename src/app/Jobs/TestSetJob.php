@@ -34,7 +34,6 @@ class TestSetJob implements ShouldQueue
      */
     public function handle(): void
     {
-        TODO: получить запросы и по каждому запросу обработать цикл
         $api = "https://api.megaindex.ru";
         $scanPosition = "scan_yandex_position";
         $user = "indexpro24@gmail.com";
@@ -43,13 +42,13 @@ class TestSetJob implements ShouldQueue
         $region = "47";
         $depth = "150";
         $query = 'ремонт квартир в Дзержинске';
-        $url = "" . $api . "" . $scanPosition . "?user=" . $user . "&password=" . $pass . "&lr=" . $region . "&results=" . $depth . "&request=" . $query . "&show_title=1";
+        $url = "" . $api . "/" . $scanPosition . "?user=" . $user . "&password=" . $pass . "&lr=" . $region . "&results=" . $depth . "&request=" . $query . "&show_title=1";
 
         $getData = file_get_contents($url);
         $jsonData = json_decode($getData);
         $allPositions = $jsonData->data;
-        $first = Arr::first($allPositions, function ($value, $key) {
-            return $value->domain == $this->domain;
+        $first = Arr::first($allPositions, function ($value, $key) use ($domain) {
+            return $value->domain == $domain;
         });
 
 

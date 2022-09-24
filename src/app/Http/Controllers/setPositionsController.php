@@ -14,17 +14,10 @@ class setPositionsController extends Controller
 
     public function __construct()
     {
-        // $this->middleware('auth');
     }
 
     public function set(Request $request)
     {
-
         TestSetJob::dispatch()->onQueue('set_1');
-        // $data = [
-        //     'key' => 1,
-        //     'value' => 7,
-        // ];
-        // return Position::create($data);
     }
 }
