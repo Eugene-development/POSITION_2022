@@ -16,6 +16,7 @@ class GetPositionsController extends Controller
         $key = "1";
         $seoqueries = Seoquery::where('key', $key)->get();
 
+
         foreach ($seoqueries as $item) {
             $query = $item->value;
 
