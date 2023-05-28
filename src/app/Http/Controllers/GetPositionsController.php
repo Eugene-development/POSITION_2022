@@ -15,19 +15,20 @@ class GetPositionsController extends Controller
     {
         $key = "1";
         $seoqueries = Seoquery::where('key', $key)->get();
-
+        // dd($seoqueries);
+        $api = "https://api.megaindex.ru";
+        $scanPosition = "scan_yandex_position";
+        $user = "indexpro24@gmail.com";
+        $pass = "megaINDEX2022!";
+        $domain = "xn----7sbc2ahzelejid.xn--p1ai";
+        // $domain = "orbita-stroy.com";
+        // $domain = "novostroy.org";
+        // $region = 47; //Нижний Новгород
+        $region = "972"; //Дзержинск
+        $depth = "150";
 
         foreach ($seoqueries as $item) {
             $query = $item->value;
-
-            $api = "https://api.megaindex.ru";
-            $scanPosition = "scan_yandex_position";
-            $user = "indexpro24@gmail.com";
-            $pass = "megaINDEX2022!";
-            $domain = "novostroy.org";
-            $region = "47";
-            $depth = "150";
-
             $url = "" . $api . "/" . $scanPosition . "?user=" . $user . "&password=" . $pass . "&lr=" . $region . "&results=" . $depth . "&request=" . $query . "&show_title=1";
             $getData = file_get_contents($url);
             $jsonData = json_decode($getData);
@@ -39,8 +40,11 @@ class GetPositionsController extends Controller
 
             $data = [
                 'key' => 1,
-                'value' => $first ? $first->position : null
+                'parentable_type' => 'seoquery',
+                'parentable_id' => $item->id,
+                'value' => $first ? $first->position : 151
             ];
+
             Position::create($data);
         }
     }

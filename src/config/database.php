@@ -59,8 +59,10 @@ return [
             'strict' => true,
             'engine' => null,
             'options' => extension_loaded('pdo_mysql') ? array_filter([
-                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
-            ]) : [],
+                PDO::MYSQL_ATTR_SSL_CA => '/path/ca.pem',
+                PDO::MYSQL_ATTR_SSL_KEY => '/path/client-key.pem',
+                PDO::MYSQL_ATTR_SSL_CERT => '/path/client-cert.pem',
+            ]) + [PDO::MYSQL_ATTR_SSL_VERIFY_SERVER_CERT => '~/.mysql/root.crt'] : [],
         ],
 
         'pgsql' => [
@@ -125,7 +127,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
