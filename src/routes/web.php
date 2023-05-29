@@ -17,8 +17,8 @@ use App\Http\Controllers\GetPositionsController;
 |
 */
 
-Route::get('/', function () {
-    return '777';
+Route::get('/health', function () {
+    return 'Health checked';
 });
 
 Route::get('/test', [TestJobController::class, 'testMethod']);
