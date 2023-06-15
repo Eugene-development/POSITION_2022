@@ -5,6 +5,8 @@ use App\Http\Controllers\TestJobController;
 use App\Http\Controllers\SetPositionsController;
 use App\Http\Controllers\GetPositionsController;
 
+use App\Http\Controllers\UpdatePositionsController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,3 +27,9 @@ Route::get('/test', [TestJobController::class, 'testMethod']);
 // Route::post('/set-positions', [SetPositionsController::class, 'set']);
 Route::get('/set-positions', [SetPositionsController::class, 'set']);
 Route::get('/get-positions', [GetPositionsController::class, 'get']);
+
+
+
+
+
+Route::post('/update-positions', [UpdatePositionsController::class, 'updatePositions']);

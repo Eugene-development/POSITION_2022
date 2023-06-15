@@ -2,16 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Position;
 use App\Models\Seoquery;
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Arr;
 
-
-class GetPositionsController extends Controller
+class UpdatePositionsController extends Controller
 {
-    public function get()
+    public function updatePositions()
     {
         $key = "1";
         $seoqueries = Seoquery::where('key', $key)->get();
@@ -34,13 +32,6 @@ class GetPositionsController extends Controller
             $jsonData = json_decode($getData);
             $allPositions = $jsonData->data;
 
-            // $first = Arr::first($allPositions, function ($value, $key) use ($domain) {
-            //     if ($value->domain == $domain) {
-            //         return $value->domain == $domain;
-            //     } else {
-            //         return $value->domain == $domain;
-            //     }
-            // });
             $first = collect($allPositions)->where('domain', $domain)->first();
 
 
@@ -53,5 +44,7 @@ class GetPositionsController extends Controller
 
             Position::create($data);
         }
+
+        return $data;
     }
 }
