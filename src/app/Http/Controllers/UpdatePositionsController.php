@@ -45,6 +45,6 @@ class UpdatePositionsController extends Controller
             Position::create($data);
         }
 
-        return $data;
+        return 'Успешно';
     }
 }
